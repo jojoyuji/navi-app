@@ -1,32 +1,39 @@
 <template>
-  <div class="name">
-    users!
-    <span v-if="loading"> carregando...</span>
-    <ul v-else>
-      <li v-for="(i, index) in users" :key="index">
-        {{ i }}
-      </li>
-    </ul>
+  <div style="max-width:500px" class="container mx-auto">
+    <h1 class="text-2xl">
+      Usuários
+    </h1>
+    <Avatar
+      v-for="(item) in avatars"
+      :color="item.color"
+    >
+      {{ item.initial }}
+    </Avatar>
+
+    {{ avatars }}
   </div>
 </template>
+
 <script>
+import Avatar from '@/components/Avatar'
+
 export default {
-  name: 'Users',
+  components: {
+    Avatar
+  },
   data () {
     return {
-      loading: true,
-      users: []
+      avatars: [
+        { initial: 'JH', color: '#bada55' },
+        { initial: 'YK', color: 'red' },
+        { initial: 'KT', color: '#FC0' },
+        { initial: 'GT', color: '#00c4c4' },
+        { initial: 'YK', color: 'teal' }
+      ]
     }
-  },
-  mounted () {
-    this.loading = true
-    this.$axios.get('http://localhost:8080/users')
-      .then((e) => {
-        console.log(e)
-        this.loading = false
-        this.users = e.data
-      })
   }
-
 }
 </script>
+
+<style>
+</style>
