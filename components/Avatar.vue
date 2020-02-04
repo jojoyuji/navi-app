@@ -4,7 +4,6 @@
     :class="`h-${size} w-${size}`"
     class="avatar
       rounded-full
-      mx-auto
       flex items-center justify-center"
   >
     <div>
